@@ -1,5 +1,6 @@
 package com.ddl.guava;
 
+import com.ddl.guava.entity.Person;
 import com.google.common.base.Function;
 import com.google.common.base.Supplier;
 import com.google.common.collect.ArrayListMultimap;

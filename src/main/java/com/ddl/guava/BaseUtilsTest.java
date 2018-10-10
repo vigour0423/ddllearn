@@ -1,5 +1,6 @@
 package com.ddl.guava;
 
+import com.ddl.guava.entity.Person;
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
 import com.google.common.base.Optional;
@@ -21,27 +22,7 @@ import java.util.Set;
 public class BaseUtilsTest {
     @Test
     public void optionalTest() {
-        Person eee = new Person("eee", 22);
-        Person eee2 = new Person("eee2", 222);
 
-        Optional<Integer> of = Optional.of(5);
-
-        Integer or2 = (Integer) Optional.fromNullable(null).or(1);
-
-        boolean present = of.isPresent();
-        Integer integer = of.orNull();
-        Integer or = of.or(33);
-
-        Integer or1 = of.or(new Supplier<Integer>() {
-            @Override
-            public Integer get() {
-                return 33;
-            }
-        });
-        Set<Integer> integers = of.asSet();
-
-        System.out.println(of.get());
-        Optional<Object> absent = Optional.absent();
 
         /*Optional<Object> objectOptional = Optional.fromNullable(null);
         Object o = absent.get();*/
