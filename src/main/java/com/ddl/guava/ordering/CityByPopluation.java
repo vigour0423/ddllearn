@@ -49,7 +49,7 @@ public class CityByPopluation implements Comparator<City> {
             System.out.println(city.getCityName());
         }
         System.out.println("使用compound合成另一个比较器后");
-        
+
         //(多参数排序)compound合成另一个比较器，以处理当前排序器中的相等情况。
 
         /*注：用 compound 方法包装排序器时，就不应遵循从后往前读的原则。为了避免理解上的混乱，请不要把 com
