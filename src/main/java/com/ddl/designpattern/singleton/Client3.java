@@ -14,18 +14,14 @@ public class Client3 {
         final CountDownLatch countDownLatch = new CountDownLatch(threadNum);
 
         for (int i = 0; i < threadNum; i++) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-
-                    for (int i = 0; i < 1000000; i++) {
-                        //Object o = SingletonDemo4.getInstance();
-                        Object o = SingletonDemo5.INSTANCE;
-                        ((SingletonDemo5) o).singletonOperation();
-                    }
-
-                    countDownLatch.countDown();
+            new Thread(() -> {
+                for (int i1 = 0; i1 < 1000000; i1++) {
+                    Object o = SingletonDemo2.getInstance();
+                 /*   Object o = SingletonDemo5.INSTANCE;
+                    ((SingletonDemo5) o).singletonOperation();*/
                 }
+
+                countDownLatch.countDown();
             }).start();
         }
 
