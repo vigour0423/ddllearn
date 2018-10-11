@@ -1,14 +1,15 @@
 package com.ddl.guava.collection.multi;
 
-import com.ddl.guava.entity.Person;
 import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multiset;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author dongdongliu
@@ -16,12 +17,17 @@ import java.util.List;
  */
 public class MultisetTest {
 
-    @Test
-    public void hashMultisetTest() {
+    private List<String> wordList;
+
+    @Before
+    public void init() {
         String strWorld = "wer|dfd|dd|dfd|dda|de|dr";
         String[] words = strWorld.split("\\|");
-        List<String> wordList = new ArrayList<>(Arrays.asList(words));
+        wordList = new ArrayList<>(Arrays.asList(words));
+    }
 
+    @Test
+    public void hashMultisetTest() {
         //可以很方便的实现计数功能
         Multiset<String> wordsMultiset = HashMultiset.create();
 
@@ -47,5 +53,22 @@ public class MultisetTest {
 
     }
 
+    @Test
+    public void mapCount() {
+        Map<String, Integer> counts = new HashMap<>(10);
+        for (String word : wordList) {
+            //1.8后可通过merge进行操作
+            counts.merge(word, 1, (a, b) -> a + b);
+        }
+
+        for (String word : wordList) {
+            Integer count = counts.get(word);
+            if (count == null) {
+                counts.put(word, 1);
+            } else {
+                counts.put(word, count + 1);
+            }
+        }
+    }
 
 }

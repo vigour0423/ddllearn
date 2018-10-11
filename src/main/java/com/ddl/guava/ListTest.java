@@ -52,40 +52,6 @@ import java.util.Set;
 public class ListTest {
 
     @Test
-    public void multimapTest() {
-        StudentScore studentScore1 = new StudentScore();
-        studentScore1.CourseId = 10011;
-        studentScore1.score = 90;
-        Multimap<String, StudentScore> scoreMultimap = ArrayListMultimap.create();
-        for (int i = 10; i < 20; i++) {
-            StudentScore studentScore = new StudentScore();
-            studentScore.CourseId = 1001 + i;
-            studentScore.score = 100 - i;
-            scoreMultimap.put("peida", studentScore);
-        }
-        scoreMultimap.put("peida", studentScore1);
-
-        scoreMultimap.putAll("dd2", Lists.<StudentScore>newArrayList(studentScore1));
-
-        //scoreMultimap.replaceValues("peida", Lists.newArrayList(studentScore1));
-        scoreMultimap.remove("peida", studentScore1);
-
-        Multiset<String> keys = scoreMultimap.keys();
-        Set<String> strings = scoreMultimap.keySet();
-
-        Collection<Map.Entry<String, StudentScore>> entries = scoreMultimap.entries();
-        for (Map.Entry<String, StudentScore> entry : entries) {
-            System.out.println(entry.getKey() + "->" + entry.getValue());
-        }
-        Collection<StudentScore> values = scoreMultimap.values();
-        Collection<Collection<StudentScore>> values1 = scoreMultimap.asMap().values();
-
-        System.out.println("scoreMultimap:" + scoreMultimap.size());
-
-        System.out.println("scoreMultimap:" + scoreMultimap.keys());
-    }
-
-    @Test
     public void biMapTest() {
         BiMap<Integer, String> logfileMap = HashBiMap.create();
         logfileMap.put(1, "a.log");
