@@ -51,25 +51,6 @@ import java.util.Set;
  */
 public class ListTest {
 
-    @Test
-    public void immuTest() {
-        Person aa = new Person("aa", 1);
-        Person bb = new Person("bb", 2);
-        Person aa1 = new Person("aa", 1);
-        ImmutableSet<Person> persons = ImmutableSet.of(aa, bb, aa1);
-
-        ImmutableSet<String> of = ImmutableSet.of("aa", "bb", "cc", "aa");
-        System.out.println(of.size());
-        ImmutableSortedSet<String> of1 = ImmutableSortedSet.of("a", "b", "c", "a", "d", "b");
-        System.out.println(of1.asList().get(1));
-
-        ImmutableSet<String> GOOGLE_COLORS = ImmutableSet.<String>builder()
-            .add("aa")
-            .build();
-
-        ImmutableSet.Builder<String> builder = ImmutableSet.<String>builder();
-
-    }
 
     @Test
     public void multisetTest() {
