@@ -51,36 +51,6 @@ import java.util.Set;
  */
 public class ListTest {
 
-
-    @Test
-    public void multisetTest() {
-        String strWorld = "wer|dfd|dd|dfd|dda|de|dr";
-        String[] words = strWorld.split("\\|");
-        List<String> wordList = new ArrayList<String>(Arrays.asList(words));
-
-        Multiset<String> wordsMultiset = HashMultiset.create();
-        wordsMultiset.addAll(wordList);
-        for (String key : wordsMultiset.elementSet()) {
-            System.out.println(key + " count：" + wordsMultiset.count(key));
-        }
-
-        System.out.println(wordsMultiset.count("dfd"));
-
-        wordsMultiset.add("dda", 2);
-
-        for (Multiset.Entry<String> entry : wordsMultiset.entrySet()) {
-            System.out.println(entry.getElement() + "->" + entry.getCount());
-        }
-
-        wordsMultiset.remove("de", 2);
-
-        wordsMultiset.remove("dda", 3);
-
-        TreeMultiset<String> treeMultiset = TreeMultiset.create();
-        treeMultiset.addAll(wordList);
-
-    }
-
     @Test
     public void multimapTest() {
         StudentScore studentScore1 = new StudentScore();
