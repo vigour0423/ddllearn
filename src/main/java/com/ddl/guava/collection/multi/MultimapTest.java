@@ -7,7 +7,9 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Multiset;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,6 +19,9 @@ import java.util.Set;
  * @version 1.0
  */
 public class MultimapTest {
+
+    private Map<String, List<Employee>> map = new HashMap<>();
+
     @Test
     public void multimapTest() {
         Employee xiaoming = new Employee("xiaoming", 21);
@@ -89,5 +94,18 @@ public class MultimapTest {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    private void jdkMap(String key, Employee employee) {
+        List<Employee> employees = map.get(key);
+        if (employees == null) {
+            employees = new ArrayList<>();
+            map.put(key, employees);
+        }
+        employees.add(employee);
+
+        //jdk1.8后的使用
+        List<Employee> employees1 = map.computeIfAbsent(key, k -> new ArrayList<>());
+        employees1.add(employee);
     }
 }

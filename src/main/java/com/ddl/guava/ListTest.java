@@ -51,18 +51,7 @@ import java.util.Set;
  */
 public class ListTest {
 
-    @Test
-    public void biMapTest() {
-        BiMap<Integer, String> logfileMap = HashBiMap.create();
-        logfileMap.put(1, "a.log");
-        logfileMap.put(2, "b.log");
-        logfileMap.put(3, "c.log");
-        BiMap<String, Integer> filelogMap = logfileMap.inverse();
-        logfileMap.forcePut(4, "c.log");
-        filelogMap.forcePut("b.log", 5);
-        System.out.println("logfileMap:" + logfileMap);
-        System.out.println("filelogMap:" + filelogMap);
-    }
+
 
     @Test
     public void tableTest() {
