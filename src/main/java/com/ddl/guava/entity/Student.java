@@ -15,6 +15,11 @@ public class Student {
 
     private String className;
 
+
+    public Student() {
+
+    }
+
     public Student(String firstName, String lastName, int rollNo, String className) {
         this.firstName = firstName;
         this.lastName = lastName;

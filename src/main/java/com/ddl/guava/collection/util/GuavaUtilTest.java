@@ -97,6 +97,7 @@ public class GuavaUtilTest {
         Iterables.retainAll(people, people2);
 
 
+
     }
 
     @Test
@@ -332,6 +333,7 @@ public class GuavaUtilTest {
         Table<String, Character, Integer> table = Tables.newCustomTable(Maps.newLinkedHashMap(), Maps::newLinkedHashMap);
         //方法允许你把 Table<C, R, V>转置成 Table<R, C, V>。
         Table<Character, String, Integer> transpose = Tables.transpose(table);
+
     }
 
 }
