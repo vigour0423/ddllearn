@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  */
 public class CacheLoaderTest {
-
     /**
      * cacheLoader方式实现实例：
      */
@@ -30,7 +29,7 @@ public class CacheLoaderTest {
                 //设置并发级别为8，并发级别是指可以同时写缓存的线程数
                 .concurrencyLevel(8)
                 //设置写缓存后8秒钟过期
-                .expireAfterWrite(8, TimeUnit.SECONDS)
+                //.expireAfterWrite(8, TimeUnit.SECONDS)
                 //设置缓存容器的初始容量为10
                 .initialCapacity(10)
                 //设置缓存最大容量为100，超过100之后就会按照LRU最近最少使用算法来移除缓存项
@@ -38,7 +37,7 @@ public class CacheLoaderTest {
                 //开启 Guava Cache 的统计功能
                 .recordStats()
                 //为缓存增加自动定时刷新功能(存项只有在被检索时才会真正刷)
-                /*.refreshAfterWrite(6,TimeUnit.SECONDS)*/
+                //.refreshAfterWrite(10, TimeUnit.SECONDS)
                 //设置缓存的移除通知,监听(异步)
                 /*   .removalListener(
                            RemovalListeners.asynchronous(notification ->
@@ -54,6 +53,7 @@ public class CacheLoaderTest {
                         new CacheLoader<>() {
                             @Override
                             public Student load(Integer key) throws Exception {
+
                                 System.out.println("load student " + key);
                                 Student student = new Student();
                                 student.setRollNo(key);
@@ -80,9 +80,11 @@ public class CacheLoaderTest {
         ImmutableMap<Integer, Student> allPresent = studentCache.getAllPresent(Lists.newArrayList(1, 2, 3));
         System.out.println("allPresent" + allPresent);
 
-        //一次获得多个键的缓存值(不存在的key会调用Load加载缓存)
+        //一次获得多个键的缓存值(不存在的key会调用Load加载缓存，或者调用loadAll(需要重写))
         ImmutableMap<Integer, Student> all = studentCache.getAll(Lists.newArrayList(1, 2, 3));
         System.out.println("all" + all);
+
+        System.out.println("=========移除缓存=========");
 
         //从缓存中移除缓存项
         studentCache.invalidateAll();
@@ -97,10 +99,10 @@ public class CacheLoaderTest {
 
         System.out.println(studentCache.get(2));
 
-
         studentCache.asMap().putIfAbsent(3, student);
 
         System.out.println(studentCache.get(3));
+
 
         System.out.println("=========刷新数据=========");
         studentCache.refresh(3);
