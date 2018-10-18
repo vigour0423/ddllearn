@@ -1,6 +1,7 @@
 package com.ddl.guava.hash;
 
 import com.google.common.collect.Lists;
+import com.google.common.eventbus.Subscribe;
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
 
@@ -33,6 +34,11 @@ public class BloomFilterTest {
             }
         }
         System.out.println("有误伤的数量：" + list.size());
+    }
+
+    @Subscribe
+    public void lister(Integer integer) {
+        System.out.printf("%d from int%n", integer);
     }
 
 }
